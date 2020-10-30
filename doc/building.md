@@ -33,6 +33,7 @@ Dependency list:
     C     cmake >=3.16
       A   numpy
       A   python imaging library (PIL) -> pillow
+     RA   toml
     CR    opengl >=3.3
     CR    libepoxy
     CR    libpng
@@ -119,7 +120,7 @@ Make sure you have all the dependencies installed.
   - Linux etc: `./configure`
   - macOS:  `./configure --compiler=clang`, `./configure --mode=release --compiler=gcc`
 - `make` generates and builds everything
-- `make run` or `./run` launches the game. Try `./run --help`!
+- `make run` or `bin/run` launches the game. Try `bin/run --help`!
 - `make test` runs the built-in tests.
 
 
@@ -185,8 +186,6 @@ and will provide you with updates!
   - Unfortunately, it's not as simple as invoking a compiler. Building
     `openage` involves code generation and the building of Cython
     extension modules.
-  - See [buildsystem/simple](/buildsystem/simple), which does exactly
-    these things, manually (don't use this for production).
 
 * Why don't you `$proposition`? Your `$component` is crap
   and would be much better then!

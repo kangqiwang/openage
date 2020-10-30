@@ -32,8 +32,21 @@ endif()
 # Never use the Windows Registry to find python
 set(Python3_FIND_REGISTRY "NEVER")
 
+# when there are multiple pythons, preferrably use the version of
+# the default `python3` executable.
+execute_process(
+	COMMAND "python3" -c "import platform; print(platform.python_version())"
+	OUTPUT_VARIABLE PYVER_OUTPUT
+	RESULT_VARIABLE PYVER_RETVAL
+)
+
+if(PYVER_RETVAL EQUAL 0)
+	string(REGEX MATCH "^[0-9]+\\.[0-9]+" PYTHON_MIN_VERSION "${PYVER_OUTPUT}")
+	set(need_exact_version "EXACT")
+endif()
+
 # use cmake's FindPython3 to locate library and interpreter
-find_package(Python3 ${PYTHON_MIN_VERSION} COMPONENTS Interpreter Development NumPy)
+find_package(Python3 ${PYTHON_MIN_VERSION} ${need_exact_version} COMPONENTS Interpreter Development NumPy)
 
 
 # python version string to cpython api test in modules/FindPython_test.cpp
@@ -53,7 +66,7 @@ try_compile(PYTHON_TEST_RESULT
 
 if(NOT PYTHON_TEST_RESULT)
 	message(WARNING "!! No suitable Python interpreter was found !!\n")
-	message(WARNING "We need a Python interpreter >= 3.6 that is shipped with libpython and header files.\n")
+	message(WARNING "We need a Python interpreter >= ${PYTHON_MIN_VERSION} that is shipped with libpython and header files.\n")
 	message(WARNING "Specify the directory to your own with -DPYTHON_DIR=/dir/of/executable\n\n\n")
 
 elseif(PYTHON_TEST_RESULT)
@@ -63,7 +76,7 @@ elseif(PYTHON_TEST_RESULT)
 	set(PYTHON_FOUND ${Python3_Interpreter_FOUND})
 	set(PYTHON_LIBRARIES ${Python3_LIBRARIES} CACHE STRING "Linker invocation for the Python library" FORCE)
 	set(PYTHON_INCLUDE_DIRS ${Python3_INCLUDE_DIRS} CACHE PATH "Location of the Python include dir" FORCE)
-	set(PYTHONLIBS_VERSION_STRING ${Python3_VERSION})
+	set(PYTHON_VERSION_STRING ${Python3_VERSION})
 
 	# Numpy.cmake vars <= Python3.cmake vars
 	set(NUMPY_FOUND ${Python3_NumPy_FOUND})
@@ -106,9 +119,6 @@ function(py_get_config_var VAR RESULTVAR)
 		"from distutils.sysconfig import get_config_var; print(get_config_var('${VAR}'))"
 		RESULT
 	)
-	if(MINGW)
-		string(REPLACE "dll" "pyd" RESULT "${RESULT}")
-	endif()
 
 	set("${RESULTVAR}" "${RESULT}" PARENT_SCOPE)
 endfunction()

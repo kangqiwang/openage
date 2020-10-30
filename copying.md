@@ -8,7 +8,7 @@ _the openage authors_ are:
 
 | Full name                   | aliases                     | E-Mail                                            |
 |-----------------------------|-----------------------------|---------------------------------------------------|
-| Jonas Jelten                | TheJJ                       | jj à sft dawt mx                                  |
+| Jonas Jelten                | TheJJ                       | jj à sft dawt lol                                 |
 | Michael Enßlin              | mic_e                       | michael à ensslin dawt cc                         |
 | Andre Kupka                 | freakout                    | kupka à in dawt tum dawt de                       |
 | Frank Schmidt               | gellardo                    | rubiccuber à googlemail dawt com                  |
@@ -16,7 +16,7 @@ _the openage authors_ are:
 | Sascha Vincent Kurowski     | svkurowski                  | svkurowski à gmail dawt com                       |
 | James Mintram               | JimmyJazz                   | jamesmintram à gmail dawt com                     |
 | Martin McGrath              | MartinMcGrath               | mcgrath dawt martin à gmail dawt com              |
-| René Kooi                   | goto-bus-stop               | rene à kooi dawt me                               |
+| Renée Kooi                  | goto-bus-stop               | renee à kooi dawt me                               |
 | Markus Elfring              | elfring                     | elfring à users dawt sourceforge dawt net         |
 | Jimmy Berry                 | boombatower                 | jimmy à boombatower dawt com                      |
 | João Roque                  | joaoroque                   | joaoroque à gmail dawt com                        |
@@ -127,6 +127,10 @@ _the openage authors_ are:
 | Aristotelis Dossas          | teldosas                    | teldosas à gmail dawt com                         |
 | Martin Sandsmark            | martin                      | martin dawt sandsmark à kde dawt org              |
 | Merlin Stollenwerk          | Mese96                      | merlin-stollenwerk à past-development dawt de     |
+| 段清楠 Duan Qingnan          | duanqn                      | duanqn_own_1 à yeah dawt net                      |
+| Sean Ramey                  | SeanRamey                   | sramey40 à gmail dawt com                         |
+| D R Siddhartha              | drs-11                      | siddharthadr11 à gmail dawt com                   |
+| Martin Matějek              | mmtj                        | martin dawt matejek à gmx dawt com                |
 
 If you're a first-time committer, add yourself to the above list. This is not
 just for legal reasons, but also to keep an overview of all those nicknames.
